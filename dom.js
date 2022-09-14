@@ -29,3 +29,20 @@ header2.innerText = 'add_list';
  header2.style.fontWeight='bold';
  header2.style.color='green';
 
+
+ //getElementById
+ var getclass = document.getElementsByClassName('list-group-item');
+ console.log(getclass);
+ console.log(getclass[1]);
+ getclass[1].textContent='Newly arrived item';
+ getclass[1].style.color='red';
+ getclass[1].style.fontWeight='bold';
+
+//  for(var i=0; i < getclass.length; i++){
+//     getclass[i].style.backgroundColor='#f4f4f4';
+//  }
+getclass[3].style.backgroundColor='green';
+for(var i=0; i<getclass.length; i++){
+    getclass[i].style.color='red';
+    getclass[i].style.fontWeight='bold';
+}

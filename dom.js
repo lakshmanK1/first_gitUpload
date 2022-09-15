@@ -34,7 +34,7 @@ header2.innerText = 'add_list';
  var getclass = document.getElementsByClassName('list-group-item');
  console.log(getclass);
  console.log(getclass[1]);
- getclass[1].textContent='Newly arrived item';
+ getclass[1].textContent='Newly arrived item 2';
 //  getclass[1].style.color='red';
  getclass[1].style.fontWeight='bold';
 
@@ -57,3 +57,19 @@ li[5].style.fontStyle='italic';
 var newlist = document.getElementsByClassName('lastitem');
 newlist[0].style.fontWeight='bold';
 newlist[0].style.backgroundColor='orange';
+
+//querySelector
+// var seconditem = document.querySelector('.list-group-item:nth-child(2)');
+// seconditem.style.backgroundColor='green';
+
+// var thirditem = document.querySelector('li:nth-child(3)');
+// thirditem.style.display='none';
+
+//querySelectorAll
+var secondele = document.querySelectorAll('li');
+secondele[2].style.color='green';
+
+var odd = document.querySelectorAll('li:nth-child(odd)');
+for(var i=0; i<odd.length; i++){
+    odd[i].style.backgroundColor='green';
+}

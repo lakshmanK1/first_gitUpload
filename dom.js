@@ -66,10 +66,89 @@ newlist[0].style.backgroundColor='orange';
 // thirditem.style.display='none';
 
 //querySelectorAll
-var secondele = document.querySelectorAll('li');
-secondele[2].style.color='green';
+// var secondele = document.querySelectorAll('li');
+// secondele[2].style.color='green';
 
-var odd = document.querySelectorAll('li:nth-child(odd)');
-for(var i=0; i<odd.length; i++){
-    odd[i].style.backgroundColor='green';
-}
+// var odd = document.querySelectorAll('li:nth-child(odd)');
+// for(var i=0; i<odd.length; i++){
+//     odd[i].style.backgroundColor='green';
+// }
+
+
+//traversing
+// //parentNode
+// var itemlist = document.querySelector('li');
+// console.log(itemlist.parentNode);
+// console.log(itemlist.parentNode.parentNode);
+// console.log(itemlist.parentNode.parentNode.parentNode);
+// itemlist.parentNode.parentNode.parentNode.style.backgroundColor='grey';
+
+//parentElement(Same actions perform as parentNode)
+var itemlist = document.querySelector('li');
+console.log(itemlist.parentElement);
+console.log(itemlist.parentElement.parentElement);
+console.log(itemlist.parentElement.parentElement.parentElement);
+itemlist.parentElement.parentElement.parentElement.style.backgroundColor='grey';
+
+//childNode
+var ulist= document.querySelector('ul');
+console.log(ulist.childNodes);
+
+//childern
+console.log(ulist.children);
+
+//firstChild
+console.log(ulist.firstChild);
+
+//firstChildElement
+console.log(ulist.firstElementChild);
+ulist.firstElementChild.textContent='item 1';
+
+//lastChild
+console.log(itemlist.lastChild);
+
+//lastElementChild
+console.log(ulist.lastElementChild);
+ulist.lastElementChild.textContent='Hi!';
+
+//nextSibling
+console.log(ulist.nextSibling);
+//nextElementSibling
+console.log(itemlist.nextElementSibling);
+itemlist.nextElementSibling.textContent='item 2.0';
+console.log(ulist.nextElementSibling);
+ulist.nextElementSibling.textContent='Hey Buddy!, items list ended.';
+
+//previousSibling
+console.log(ulist.previousSibling);
+//previousElementSibling
+console.log(ulist.previousElementSibling);
+ulist.previousElementSibling.textContent='list_of_items';
+
+
+//createElement
+//creating div element
+var divElement = document.createElement('div'); //creating div
+divElement.className='new-div-class'; //creating class for div
+divElement.id='new-div-id'; //creating id for div
+divElement.setAttribute('style','color:red'); //creating attribute for div
+var divtext = document.createTextNode('Hello World!'); //creating textnode
+divElement.append(divtext); //added divtext to divElement
+//to make affect in web page
+var container = document.querySelector('header .container');
+let h1=document.querySelector('header h1');
+container.insertBefore(divElement, h1);
+
+//creating h1 beform li
+var newh1 = document.createElement('h1');
+newh1.className='new-h1-class';
+newh1.id='new-h1-id';
+newh1.setAttribute('style','color:orange');
+var h1_text = document.createTextNode('Hello World');
+newh1.append(h1_text);
+
+var beforeul = document.querySelector('div  #main');
+var ul = document.querySelector('div  ul');
+beforeul.insertBefore(newh1, ul);
+
+

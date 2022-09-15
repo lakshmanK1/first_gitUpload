@@ -35,14 +35,25 @@ header2.innerText = 'add_list';
  console.log(getclass);
  console.log(getclass[1]);
  getclass[1].textContent='Newly arrived item';
- getclass[1].style.color='red';
+//  getclass[1].style.color='red';
  getclass[1].style.fontWeight='bold';
 
-//  for(var i=0; i < getclass.length; i++){
-//     getclass[i].style.backgroundColor='#f4f4f4';
-//  }
-getclass[3].style.backgroundColor='green';
-for(var i=0; i<getclass.length; i++){
-    getclass[i].style.color='red';
-    getclass[i].style.fontWeight='bold';
-}
+ for(var i=0; i < getclass.length; i++){
+    getclass[i].style.backgroundColor='#f4f4f4';
+ }
+// getclass[3].style.backgroundColor='green';
+// for(var i=0; i<getclass.length; i++){
+//     getclass[i].style.color='red';
+//     getclass[i].style.fontWeight='bold';
+// }
+
+//getelementByTagName
+var li = document.getElementsByTagName('li');
+console.log(li[5]);
+li[5].style.color='green';
+li[5].style.textAlign='center';
+li[5].style.fontStyle='italic';
+
+var newlist = document.getElementsByClassName('lastitem');
+newlist[0].style.fontWeight='bold';
+newlist[0].style.backgroundColor='orange';

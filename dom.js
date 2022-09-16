@@ -156,22 +156,24 @@ header2.textContent='New add List';
 //submitting form
 var form = document.getElementById('formType');
 var itemList = document.getElementById('items');
+var filter = document.getElementById('filter');
 
 
 //submit event
 form.addEventListener('submit', addItem);
 
+
 function addItem(e){
     e.preventDefault();
     // get input text 
     var addIP = document.getElementById('get-ip').value;
-
+    var descrip = document.getElementById('new-get-ip').value;
     //create li
     var newList = document.createElement('li');
     newList.className='list-group-item';
     //add textnode
     newList.appendChild(document.createTextNode(addIP));
-
+    newList.appendChild(document.createTextNode(descrip));
     //create button
     var deletebtn = document.createElement('button');
     deletebtn.className='btn btn-danger btn-sm  float-right delete';
@@ -181,8 +183,17 @@ function addItem(e){
     newList.appendChild(deletebtn);
     //append list to ul
     itemList.appendChild(newList);
+  
+
+    //edit button
+    var editbtn = document.createElement('button');
+    editbtn.className='btn btn-success btn-sm float-right success';
+    editbtn.appendChild(document.createTextNode('Edit'));
+    newList.appendChild(editbtn);
 }
 
+
+//delete event
 itemList.addEventListener("click",removeItem);
 //function to remove item, when click btn
 function removeItem(e){
@@ -192,4 +203,26 @@ function removeItem(e){
             itemList.removeChild(li);
         }
     }
+}
+
+
+//filter event
+filter.addEventListener('keyup',filteritems);
+//filter function
+function filteritems(e){
+    //to convert letters to lowercase
+    var text=e.target.value.toLowerCase();
+    //get list
+    var items = itemList.getElementsByTagName('li');
+    Array.from(items).forEach(function(item){
+        var itemName = item.firstChild.textContent;
+        var description = item.childNodes[1].textContent;
+        if(itemName.toLowerCase().indexOf(text)  != -1 || description.toLowerCase().indexOf(text)  != -1){
+            item.style.display='block';
+        }
+        else{
+            item.style.display='none';
+        }
+    })
+   
 }

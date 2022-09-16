@@ -229,6 +229,24 @@
 
 
 //creating store functionality for form submit
+// var submitbtn = document.getElementById('val-submit');
+// var form = document.getElementById('formType');
+
+// submitbtn.addEventListener('click', storesubval);
+// function storesubval(e){
+//     e.preventDefault();
+//     var nameVal = document.getElementById('get-ip').value;
+//     //creating local storage
+//     localStorage.setItem('User Name', nameVal);
+
+
+//     var mailVal = document.getElementById('new-get-ip').value;
+//     //creating local storage
+//     localStorage.setItem('Mail Id', mailVal);
+
+// }
+
+//creating store functionality for form submit
 var submitbtn = document.getElementById('val-submit');
 var form = document.getElementById('formType');
 
@@ -236,12 +254,22 @@ submitbtn.addEventListener('click', storesubval);
 function storesubval(e){
     e.preventDefault();
     var nameVal = document.getElementById('get-ip').value;
-    //creating local storage
-    localStorage.setItem('User Name', nameVal);
+    //object for input1
+    var obj_store_name = {
+        Name:nameVal
+    }
+    //setting local storage & converting obj to string
+    localStorage.setItem('store_name',JSON.stringify(obj_store_name));
 
-
+    
     var mailVal = document.getElementById('new-get-ip').value;
-    //creating local storage
-    localStorage.setItem('Mail Id', mailVal);
-
+    //object for input2
+    var obj_store_mail = {
+        Mail_id: mailVal
+    }
+        //setting local storage & converting obj to string
+    localStorage.setItem('store_mail',JSON.stringify(obj_store_mail)); 
 }
+//object for local storage
+
+

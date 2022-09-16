@@ -1,25 +1,25 @@
 // console.dir(document);
 
-console.log(document);
-console.log(document.baseURI);
-console.log(document.title);
-console.log(document.domain);
-console.log(document.doctype);
-console.log(document.head);
-console.log(document.body);
-document.title="New_Item_Listener";
-console.log(document.all);
-console.log(document.all[13]);
-console.log(document.forms);
-console.log(document.links);
+// console.log(document);
+// console.log(document.baseURI);
+// console.log(document.title);
+// console.log(document.domain);
+// console.log(document.doctype);
+// console.log(document.head);
+// console.log(document.body);
+// document.title="New_Item_Listener";
+// console.log(document.all);
+// console.log(document.all[13]);
+// console.log(document.forms);
+// console.log(document.links);
 
 //getElementByID
-console.log(document.getElementById('header-main'));
+// console.log(document.getElementById('header-main'));
 
-var header2 = document.getElementById('h2-main');
-console.log(header2);
-//textcontent will read all text, no limits.Ex: here, style="display:none"  textcontent not consider about it, and reads all text.
-header2.textContent='New add List';
+// var header2 = document.getElementById('h2-main');
+// console.log(header2);
+// //textcontent will read all text, no limits.Ex: here, style="display:none"  textcontent not consider about it, and reads all text.
+// header2.textContent='New add List';
 //innerText will read text, with limits. Ex: here, style="display:none". where innerText will consider about it, and it not reads restricted text.
 // header2.innerText = 'add_list';
 //  var headertitle = document.getElementById('header-title');
@@ -154,75 +154,94 @@ header2.textContent='New add List';
 
 
 //submitting form
-var form = document.getElementById('formType');
-var itemList = document.getElementById('items');
-var filter = document.getElementById('filter');
+// var form = document.getElementById('formType');
+// var itemList = document.getElementById('items');
+// var filter = document.getElementById('filter');
 
 
 //submit event
-form.addEventListener('submit', addItem);
+// form.addEventListener('submit', addItem);
 
 
-function addItem(e){
-    e.preventDefault();
-    // get input text 
-    var addIP = document.getElementById('get-ip').value;
-    var descrip = document.getElementById('new-get-ip').value;
-    //create li
-    var newList = document.createElement('li');
-    newList.className='list-group-item';
-    //add textnode
-    newList.appendChild(document.createTextNode(addIP));
-    newList.appendChild(document.createTextNode(descrip));
-    //create button
-    var deletebtn = document.createElement('button');
-    deletebtn.className='btn btn-danger btn-sm  float-right delete';
+// function addItem(e){
+//     e.preventDefault();
+//     // get input text 
+//     var addIP = document.getElementById('get-ip').value;
+//     var descrip = document.getElementById('new-get-ip').value;
+//     //create li
+//     var newList = document.createElement('li');
+//     newList.className='list-group-item';
+//     //add textnode
+//     newList.appendChild(document.createTextNode(addIP));
+//     newList.appendChild(document.createTextNode(descrip));
+//     //create button
+//     var deletebtn = document.createElement('button');
+//     deletebtn.className='btn btn-danger btn-sm  float-right delete';
 
-    deletebtn.appendChild(document.createTextNode('X'));
-    //append btn to list(newList)
-    newList.appendChild(deletebtn);
-    //append list to ul
-    itemList.appendChild(newList);
+//     deletebtn.appendChild(document.createTextNode('X'));
+//     //append btn to list(newList)
+//     newList.appendChild(deletebtn);
+//     //append list to ul
+//     itemList.appendChild(newList);
   
 
-    //edit button
-    var editbtn = document.createElement('button');
-    editbtn.className='btn btn-success btn-sm float-right success';
-    editbtn.appendChild(document.createTextNode('Edit'));
-    newList.appendChild(editbtn);
-}
+//     //edit button
+//     var editbtn = document.createElement('button');
+//     editbtn.className='btn btn-success btn-sm float-right success';
+//     editbtn.appendChild(document.createTextNode('Edit'));
+//     newList.appendChild(editbtn);
+// }
 
 
-//delete event
-itemList.addEventListener("click",removeItem);
-//function to remove item, when click btn
-function removeItem(e){
-    if(e.target.classList.contains('delete')){
-        if(confirm('Do you want to delete ?')){
-            var li = e.target.parentElement;
-            itemList.removeChild(li);
-        }
-    }
-}
+// //delete event
+// itemList.addEventListener("click",removeItem);
+// //function to remove item, when click btn
+// function removeItem(e){
+//     if(e.target.classList.contains('delete')){
+//         if(confirm('Do you want to delete ?')){
+//             var li = e.target.parentElement;
+//             itemList.removeChild(li);
+//         }
+//     }
+// }
 
 
-//filter event
-filter.addEventListener('keyup',filteritems);
-//filter function
-function filteritems(e){
-    //to convert letters to lowercase
-    var text=e.target.value.toLowerCase();
-    //get list
-    var items = itemList.getElementsByTagName('li');
-    Array.from(items).forEach(function(item){
-        var itemName = item.firstChild.textContent;
-        var description = item.childNodes[1].textContent;
-        if(itemName.toLowerCase().indexOf(text)  != -1 || description.toLowerCase().indexOf(text)  != -1){
-            item.style.display='block';
-        }
-        else{
-            item.style.display='none';
-        }
-    })
+// //filter event
+// filter.addEventListener('keyup',filteritems);
+// //filter function
+// function filteritems(e){
+//     //to convert letters to lowercase
+//     var text=e.target.value.toLowerCase();
+//     //get list
+//     var items = itemList.getElementsByTagName('li');
+//     Array.from(items).forEach(function(item){
+//         var itemName = item.firstChild.textContent;
+//         var description = item.childNodes[1].textContent;
+//         if(itemName.toLowerCase().indexOf(text)  != -1 || description.toLowerCase().indexOf(text)  != -1){
+//             item.style.display='block';
+//         }
+//         else{
+//             item.style.display='none';
+//         }
+//     })
    
+// }
+
+
+//creating store functionality for form submit
+var submitbtn = document.getElementById('val-submit');
+var form = document.getElementById('formType');
+
+submitbtn.addEventListener('click', storesubval);
+function storesubval(e){
+    e.preventDefault();
+    var nameVal = document.getElementById('get-ip').value;
+    //creating local storage
+    localStorage.setItem('User Name', nameVal);
+
+
+    var mailVal = document.getElementById('new-get-ip').value;
+    //creating local storage
+    localStorage.setItem('Mail Id', mailVal);
+
 }

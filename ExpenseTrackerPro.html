@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense-Tracker</title>
+</head>
+<body>
+    <form onsubmit="doThis(event)">
+    <label id="name">Choose Expense Amount</label><br>
+    <input type="number" class="ip1" name="n1" id="ident1"><br>
+    <label id="name">Choose description</label><br>
+    <input type="text" class="ip2" name="n2" id="ident2"><br>
+    <label id="name">Choose category</label><br>
+    <input type="text" class="ip3" name="n3" id="ident3"><br>
+    <button>Add Expense</button>
+</form>
+    <ul id="forlisting"></ul>
+    <script>
+        function doThis(event){
+            event.preventDefault();
+            const expenseAmount = event.target.n1.value;
+            const descrip = event.target.n2.value;
+            const category = event.target.n3.value;
+            const obj = {
+                expenseAmount,
+                descrip,
+                category
+            }
+            localStorage.setItem(obj.descrip, JSON.stringify(obj));
+            printDetails(obj);
+
+        };
+        function printDetails(newItem){
+            const parentNode = document.getElementById("forlisting");
+            const childNode = `<li id=${newItem.expenseAmount}> ${newItem.expenseAmount} - ${newItem.descrip} - ${newItem.category}
+                <button onclick=removeDetails(${newItem.expenseAmount})>Delete Expense</button>
+                <button onclick=editDetails('${newItem.expenseAmount}','${newItem.descrip}','${newItem.category}')>Edit Expense </button></li>`;
+            parentNode.innerHTML = parentNode.innerHTML + childNode;
+
+        }
+        function editDetails(n1,n2,n3){
+
+        document.getElementById('ident1').value = n1;
+        document.getElementById('ident2').value = n2;
+        document.getElementById('ident3').value =n3;
+
+        removeDetails(expenseAmount);
+       }
+
+        function removeDetails(expenseAmount){
+            localStorage.removeItem(expenseAmount);
+            deleteDetailsonScreen(expenseAmount);
+        }
+        function deleteDetailsonScreen(expenseAmount){
+            const parentNode = document.getElementById("forlisting");
+            const childnodeDelete = document.getElementById(expenseAmount);
+            parentNode.removeChild(childnodeDelete);
+
+        }
+    </script>
+</body>
+</html>

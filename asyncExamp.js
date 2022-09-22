@@ -78,7 +78,7 @@ console.log(`son : Father, i need ${drinks}`);
 console.log("father : Ok son, wait i will bring");
 return ticket;
 
-
+//how to handle Promise.all with async await
 // let [Popcorn, Butter, CoolDrink] = await Promise.all([getPopCorn, getButterPopCorn, getCoolDrink]);
 // console.log(`${Popcorn},${Butter},${CoolDrink}`);
 

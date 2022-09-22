@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const posts = [
+            {title:"Post One" ,info:"This is Post one"},
+            {title:"Post Two",info:"This is Post two"}
+        ]
+        const newPosts = async () => {
+        const getPost = new Promise ((resolve, reject) => {
+            setTimeout(() => {
+                let output = '';
+                posts.forEach((post, index) => {
+                    output += `<li>${post.title}</li>`;
+                });
+                document.body.innerHTML=output;
+            },1000);
+        })
+            
+
+        const createPost = new Promise((resolve, reject) => {
+                setTimeout((post) => {
+                    posts.push(post);
+                    const error = false;
+                    if(!error){
+                        resolve();
+                    }else{
+                        reject("Error: Something went wronge");
+                    }
+                },2000);
+            }); 
+        
+            let first = await getPost;
+            let second = await createPost;
+    }
+    newPosts().then((m) => {
+    console.log(m);
+})
+
+    </script>
+</body>
+</html>

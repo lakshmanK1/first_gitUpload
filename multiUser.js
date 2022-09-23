@@ -1,10 +1,5 @@
 const submitButton = document.getElementById("submit");
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("vscode");
-  localStorage.getItem();
-});
-
 if (document.readyState !== "loading") {
   console.log("vscode");
 
@@ -17,8 +12,7 @@ if (document.readyState !== "loading") {
   Object.keys(localStorage).forEach((key) => {
     //i==2
     if (key.match(/userDetails/g)) {
-      //we only care about keys that start with userDetails
-      //this is called regex matching
+    
       stringifiedDetailsOfPeople = localStorage.getItem(key);
       console.log("stringifiedDetailsOfPeople", stringifiedDetailsOfPeople);
       detailsOfPeople = JSON.parse(stringifiedDetailsOfPeople);
@@ -34,14 +28,19 @@ submitButton.addEventListener("click", (e) => {
   const emailId = document.getElementById("email").value;
   const name = document.getElementById("name").value;
   if (emailId.length > 0 && name.length > 0) {
+
     const object = {
       name: name,
       emailId: emailId //unique
     };
-    localStorage.setItem("userDetails" + emailId, JSON.stringify(object));
-    // localStorage.setItem("userDetailEmail" + emailId, emailId);
-    // listOfPeople.push(object)
-    addNewLineElement(object);
+    axios.post("https://crudcrud.com/api/38f658a203d744ec8a2cf2dafc562136/useDetails",object)
+    .then((res) => {
+      addNewLineElement(res.data)
+      console.log(res);
+    })
+
+    // localStorage.setItem("userDetails" + emailId, JSON.stringify(object));
+    // addNewLineElement(object);
   }
 });
 

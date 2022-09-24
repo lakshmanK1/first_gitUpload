@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const posts = [
+            {title:"Post One" ,info:"This is Post one"},
+            {title:"Post Two",info:"This is Post two"}
+        ]
+        function getPost(){
+            setTimeout(() => {
+                let output = '';
+                posts.forEach((post, index) => {
+                    output += `<li>${post.title}</li>`;
+                });
+                document.body.innerHTML=output;
+            },1000);
+        }
+
+        function createPost(post){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    posts.push(post);
+                    const error = false;
+                    if(!error){
+                        resolve();
+                    }else{
+                        reject("Error: Something went wronge");
+                    }
+                },2000);
+            }); 
+        }
+
+        function deletePost(){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if(posts.length>0){
+                        resolve(posts.pop());
+                    }else{
+                        reject("Array is Empty");
+                    }
+                },1000);
+            })
+        }
+        createPost({title:"Post Three",info:"This is post three"})
+            .then(() => {
+                getPost();
+                deletePost().then((deletelastPost) => {
+                    console.log(deletelastPost);
+                    //To delete lastPost i.e 3rd 
+                    getPost();
+                    deletePost().then(() => {
+                        })
+                        
+                    })
+        })
+        .catch((arr) => console.log(arr))
+
+
+        function updateLastUserActi(){
+            return new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    posts.title = new Date().getTime();
+                    resolve(posts.title)
+                },1000)
+            })
+        }
+
+        function userUpdatesPost(){
+            Promise.all([createPost, updateLastUserActi])
+            .then(([createPostResolve, updateLastUserActiResolve]) => {
+                console.log(updateLastUserActiResolve);
+            }).catch((arr) => {console.log(arr)})
+        }
+
+    </script>
+</body>
+</html>

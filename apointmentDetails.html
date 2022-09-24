@@ -42,16 +42,6 @@
                 }
                 }).catch((err) => {console.log(err)});
                 console.log(data);
-
-                // const localStorageObj = localStorage;
-                // const localstoragekeys  = Object.keys(localStorageObj)
-
-                // for(var i =0; i< localstoragekeys.length; i++){
-                //     const key = localstoragekeys[i]
-                //     const userDetailsString = localStorageObj[key];
-                //     const userDetailsObj = JSON.parse(userDetailsString);
-                //     showNewUserOnScreen(userDetailsObj)
-                // }
             })
 
             function showNewUserOnScreen(user){
@@ -66,10 +56,15 @@
             // deleteUser('abc@gmail.com')
 
             function deleteUser(emailId){
-                console.log(emailId)
-                localStorage.removeItem(emailId);
-                removeUserFromScreen(emailId);
-
+                axios.delete("https://crudcrud.com/api/38f658a203d744ec8a2cf2dafc562136/NewuserDetails/632e9f6606e25f03e8c51925")
+                //Deleting user, Krish with id = 632e9f6606e25f03e8c51925 & also deleted from crudcrud
+                .then((res) =>{
+                    console.log(res);
+                    removeUserFromScreen(emailId);
+                }).catch((err) => {console.log(err)});
+                // console.log(emailId)
+                // localStorage.removeItem(emailId);
+                // removeUserFromScreen(emailId);
             }
 
             function removeUserFromScreen(emailId){
@@ -78,13 +73,6 @@
 
                 parentNode.removeChild(childNodeToBeDeleted)
             }
-
-
-
-
-
-
-
         </script>
 
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const posts = [
+            {title:"Post One" ,info:"This is Post one",createdAt:"2 seconds ago"},
+            {title:"Post Two",info:"This is Post two",createdAt:"2 seconds ago"}
+        ]
+        function getPost(){
+            setTimeout(() => {
+                let output = '';
+                posts.forEach((post, index) => {
+                    output += `<li>${post.title}-${post.createdAt}</li>`;
+                });
+                document.body.innerHTML=output;
+            },2000);
+        }
+
+        function createPost(post, Callback){
+            setTimeout(()=>{
+                posts.push(post);
+                Callback();
+            },3000);
+        }
+        createPost({title:"Post Three",info:"This is post three",createdAt:"3 seconds ago"},getPost);
+
+        function create4THpost(post, Callback){
+            setTimeout(()=>{
+                posts.push(post);
+                Callback();
+            },4000);
+        }
+        create4THpost({title:"Post Four",info:"This is post four",createdAt:"4 seconds ago"},createPost)
+    </script>
+</body>
+</html>

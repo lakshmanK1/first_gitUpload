@@ -1,52 +1,28 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Expense Tracker</title>
-
-    <link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-    <form  class="Form">
-        <h1> To Do List</h1>
-        <p id="error"></p>
-    <hr>
-    <label>Choose Expense</label><br>
-    <input type="number" id="input" name="Number" class="expense" >
-    <br>
-    <label > Choose Destination</label><br>
-    <input type="text" id="input" name="Destination" class="destination">
-    <br>
-    <label > Choose Category</label><br>
-    <input type="text" id="input" name="Category" class="category">
-    <br>
-
-    <input  type="submit"  id="button"  value="Submit"></input>
-
-
-
-    <ul id="users"></ul>
-
-    <div id="div"></div>
-
-</form>
-    <script src="ExpensePro.js"></script>
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
-
-</body>
-
-</html>
+<html>
+    <body>
+        <h1 style="color: orange; font-weight: bold; text-align: center;" >Expense Tracker</h1>
+        <h3 style="color: orange; text-align: center;"> <i>track your expenses...</i></h3>
+        <form onsubmit="saveToLocalStorage(event)" style="text-align: center; border: 3px solid orange; border-radius: 5px;">
+            <label>Choose Expense Amount</label><br>
+            <input id="amount" type="number" name="chooseexpenseamount" required/><br>
+            <label>Choose Description</label><br>
+            <input id="description" type="text" name="choosedescription" required/><br>
+            <label>Choose A Category</label><br>
+            <select name="chooseacategory" id="category">
+                <option value="Household">HouseHold</option>
+                <option value="Current Bill">Current Bill</option>
+                <option value="Groceries">Groceries</option>
+                <option value="Travelling">Travelling</option>
+                <option value="Mountain Hiking">Mountain Hiking</option>
+                <option value="Forest Camping">Forest Camping</option>
+                <option value="Tech Tour">Tech Tour</option>
+              </select>
+            <br>
+            <button>Add Expense</button>
+        </form>
+        <ul id="listOfUsers" style="border: 3px solid black;"></ul>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+        <script src="ExpensePro.js"></script>
+    </body>
+</html>        

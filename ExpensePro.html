@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <h1 style="color: orange; font-weight: bold; text-align: center;" >Expense Tracker</h1>
-        <h3 style="color: orange; text-align: center;"> <i>track your expenses...</i></h3>
-        <form onsubmit="saveToLocalStorage(event)" style="text-align: center; border: 3px solid orange; border-radius: 5px;">
+        <h1>Expense Tracker</h1>
+        <h3> <i>track your expenses...</i></h3>
+        <form onsubmit="saveToLocalStorage(event)" >
             <label>Choose Expense Amount</label><br>
             <input id="amount" type="number" name="chooseexpenseamount" required/><br>
             <label>Choose Description</label><br>
@@ -11,6 +11,7 @@
             <label>Choose A Category</label><br>
             <select name="chooseacategory" id="category">
                 <option value="Household">HouseHold</option>
+                <option value="Food items">Food items</option>
                 <option value="Current Bill">Current Bill</option>
                 <option value="Groceries">Groceries</option>
                 <option value="Travelling">Travelling</option>
@@ -21,7 +22,7 @@
             <br>
             <button>Add Expense</button>
         </form>
-        <ul id="listOfUsers" style="border: 3px solid black;"></ul>
+        <ul id="listOfUsers"></ul>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
         <script src="ExpensePro.js"></script>
     </body>
